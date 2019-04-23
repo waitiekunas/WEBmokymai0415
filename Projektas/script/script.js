@@ -1,20 +1,20 @@
 
-var fakeReceips = [
+var fakerecipes = [
     {
         "id": 1,
-        "Name": "First receip",
+        "Name": "First recipe",
         "Ingredients": ["salt", "pepper", "sugar"],
         "Flow": "Some random text"
     },
     {
         "id": 2,
-        "Name": "Second receip",
+        "Name": "Second recipe",
         "Ingredients": ["salt", "pepper", "sugar"],
         "Flow": "Some random text"
     },
     {
         "id": 3,
-        "Name": "Third receip",
+        "Name": "Third recipe",
         "Ingredients": ["salt", "pepper", "sugar"],
         "Flow": "Some random text"
     }
@@ -27,21 +27,21 @@ function listEntries(entries) {
 
         let parentNode = document.createElement('DIV');
         parentNode.setAttribute('id', counter);
-        parentNode.classList.add('main-receip');
+        parentNode.classList.add('main-recipe');
 
         let pictureNode = document.createElement('IMG');
         pictureNode.setAttribute('src', 'images/1.jpg');
-        pictureNode.classList.add('img-receip')
+        pictureNode.classList.add('img-recipe')
 
         let node = document.createElement("P");
         let textnode = document.createTextNode(element.Name);
         node.appendChild(textnode);
 
-        document.getElementById("receips").appendChild(parentNode);
+        document.getElementById("recipes").appendChild(parentNode);
         document.getElementById(counter).appendChild(pictureNode);
         document.getElementById(counter).appendChild(node);
         counter++;
     });
 }
 
-listEntries(fakeReceips);
+listEntries(fakerecipes);

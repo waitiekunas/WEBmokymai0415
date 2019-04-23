@@ -1,10 +1,4 @@
 
-
-.container{
-    margin:0px;
-    padding: 0px;
-}
-
 .container-header{
     background-color: red;
     widows: 100%;
@@ -30,18 +24,18 @@ p{
     margin:0px;
 }
 
-#receips{
+#recipes{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
-.main-receip{
+.main-recipe{
     display: flex;
     flex-wrap: wrap;
 }
 
-.img-receip{
+.img-recipe{
     width:200px;
     height: 200px;
 }
