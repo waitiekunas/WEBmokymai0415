@@ -30,7 +30,7 @@ function listEntries(entries) {
         parentNode.classList.add('main-recipe');
 
         let pictureNode = document.createElement('IMG');
-        pictureNode.setAttribute('src', 'images/1.jpg');
+        pictureNode.setAttribute('src', 'images/'+counter+'.jpg');
         pictureNode.classList.add('img-recipe')
 
         let node = document.createElement("P");
