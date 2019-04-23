@@ -1,0 +1,50 @@
+
+
+.container{
+    margin:0px;
+    padding: 0px;
+}
+
+.container-header{
+    background-color: red;
+    widows: 100%;
+}
+
+.container-left{
+    background-color: blue;
+    width: 10%;
+}
+
+.container-content{
+    background-color: grey;
+    width: 90%;
+}
+
+.container-body{
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+p{
+    margin:0px;
+    padding: 0px;
+}
+
+#receips{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.main-receip{
+    display: flex;
+}
+
+.img-receip{
+    width:200px;
+    height: 200px;
+}
+
+
+
