@@ -28,7 +28,6 @@
 
 p{
     margin:0px;
-    padding: 0px;
 }
 
 #receips{
@@ -39,6 +38,7 @@ p{
 
 .main-receip{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .img-receip{
