@@ -4,12 +4,19 @@
 
 .wrapper{
     display: flex;
-    justify-content: center;
+	justify-content: center;
+	background-image: url("../images/background.jpg");
+	background-color: #cccccc; 
+	height:100vh;
+  	background-position: center; 
+  	background-repeat: no-repeat; 
+	background-size: cover; 
+	background-blend-mode: multiply;
 }
 
 
 .container-header{
-    background-color: burlywood;
+    
     widows: 100%;
 }
 
@@ -18,12 +25,12 @@
 }
 
 .container-left{
-    background-color: rgb(5, 75, 5);
+   
     width: 20%;
 }
 
 .container-content{
-    background-color:wheat;
+   
     width: 80%;
 }
 
