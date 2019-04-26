@@ -22,8 +22,8 @@ var fakerecipes = [
 var fakeUser = [
     {
         "id": 1,
-        "Login": "login1",
-        "Password": "Password1"
+        "Login": "test",
+        "Password": "test"
     },
     {
         "id": 2,
@@ -43,21 +43,35 @@ var fakeUser = [
 function signIn() {
     let login = document.getElementById('login-name-input').value;
     let password = document.getElementById('password-input').value;
-    checkExisting(login, password, fakeUser);
+    showPage(checkExisting(login, password, fakeUser));
 };
 
+function showPage(bool) {
+    if (bool) {
+        document.getElementById('left-side-header').setAttribute('style', 'display:none;');
+        document.getElementById('container').setAttribute('style', 'display:block;');
+
+    }
+};
+
+function testLogin (){
+    showPage(true);
+}
+
 function checkExisting(login, password, data) {
+    let isLoggedIn = false;
     data.forEach(user => {
         if (user.Login === login && user.Password === password) {
-            console.log("match found");
+            isLoggedIn = true;
         } else {
             console.log("no match found");
         }
     })
+    return isLoggedIn;
 }
 
 function listEntries(entries) {
-    var counter = 1;
+    let counter = 1;
     entries.forEach(element => {
         console.log(element);
 
