@@ -6,34 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food-book</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
-   
+
 </head>
 <!-- https://blog.hubspot.com/marketing/best-website-designs-list  no.13 design idea-->
+
 <body>
-<div class='wrapper'> 
-        <div id="left-side-header" >
-                <div class="input-fields">
-                    <input id="login-name-input" type="text" placeholder="Login name"/>
-                    <input id="password-input" type="text" placeholder="Password"/>
-                </div>
-                <a href="#" class="myButton" id="sign-in-button" onclick="signIn()">Sign In</a>
-                <a href="#" class="myButton"id="sign-up-button">Sign Up</a>
+    <div class='wrapper'>
+        <div id="login-container">
+            <div class="input-fields">
+                <label for="inp" class="inp">
+                    <input type="text" id="login-name-input" placeholder="&nbsp;">
+                    <span class="label">Login name</span>
+                    <span class="border"></span>
+                </label>
+                <label for="inp" class="inp">
+                    <input type="text" id="password-input" placeholder="&nbsp;">
+                    <span class="label">Password</span>
+                    <span class="border"></span>
+                </label>
             </div>
-    <div class='container' id='container'>
-        <div class='container-header'>
-            
-            
+            <a href="#" class="myButton" id="sign-in-button" onclick="signIn()">Sign In</a>
+            <span>or</span>
+            <a href="#" class="myButton" id="sign-up-button" onclick="signUp()">Sign Up</a>
         </div>
-        <div class='container-body'>
-            <div class='container-left'>
-                <p>Left</p>
+        <div class='container' id='container'>
+            <div class='container-header'>
+
+
             </div>
-            <div id='recipes' class='container-content'>
-                
+            <div class='container-body'>
+                <div class='container-left'>
+                    <p>Left</p>
+                </div>
+                <div id='recipes' class='container-content'>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
     <script type="text/javascript" src="script/script.js"></script>
 </body>
 

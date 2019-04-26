@@ -48,14 +48,24 @@ function signIn() {
 
 function showPage(bool) {
     if (bool) {
-        document.getElementById('left-side-header').setAttribute('style', 'display:none;');
+        document.getElementById('login-container').setAttribute('style', 'display:none;');
         document.getElementById('container').setAttribute('style', 'display:block;');
 
     }
 };
 
-function testLogin (){
-    showPage(true);
+function signUp (){
+    let login = document.getElementById('login-name-input').value;
+    let password = document.getElementById('password-input').value;
+    let id = fakeUser.length+1;
+    fakeUser.push({
+        "id":id,
+        "Login":login,
+        "Password": password
+    });
+    document.getElementById('login-name-input').value =''
+    document.getElementById('password-input').value ='';
+
 }
 
 function checkExisting(login, password, data) {
