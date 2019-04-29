@@ -10,12 +10,14 @@ body {
 }
 * {
   box-sizing: border-box;
+  align-self: inherit;
 }
 
 
 .container{
 	width: 80%;
 	display: none;
+	margin-top: 5%;
    }
 
 .wrapper{
@@ -28,15 +30,19 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-blend-mode: multiply;
-
+	flex-wrap: wrap;
 	width: 100%;
 	color: white;
+	flex-direction: column;
 }
 
 
 .container-header{
     height:10vh;
-    width: 100%;
+	width: 100%;
+	background:rgba(255,255,255,0.5);
+	border-radius: 25px;
+	margin: 5px;
 }
 
 .container-header>p{
@@ -44,7 +50,9 @@ body {
 }
 
 .container-left{
-   
+	background:rgba(255,255,255,0.5);
+	border-radius: 25px;
+	margin: 5px;
     width: 30%;
 }
 
@@ -62,12 +70,16 @@ body {
 #recipes{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+	flex-direction: column;
+	background:rgba(255,255,255,0.5);
+	border-radius: 25px;
+	margin: 5px;
 }
 
 .main-recipe{
     display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding:10px;
 }
 
 .img-recipe{
@@ -76,10 +88,17 @@ body {
 }
 
 #login-container, .input-fields{
-	display: inline-block;
 	align-self: center;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
+.input-fields{
+	display: none;
+	width: auto;
+	margin:20px;
+}
 
 input{
     max-height: 25px;
@@ -91,8 +110,9 @@ input{
 	margin: auto;
 	width: 100%;
 	max-width: 280px;
-  }
-  .inp .label {
+
+}
+.inp .label {
 	position: absolute;
 	top: 1px;
 	left: 0;
@@ -102,50 +122,54 @@ input{
 	transform-origin: 0 0;
 	transition: all 0.2s ease;
 	width: max-content;
-  }
-  .inp .border {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 2px;
-	width: 100%;
-	transform: scaleX(0);
-	transform-origin: 0 0;
-	transition: all 0.15s ease;
-  }
-  .inp input {
-	-webkit-appearance: none;
-	border: 0;
-	font-family: inherit;
-	padding: 12px 0;
-	height: 48px;
-	font-size: 16px;
-	font-weight: 500;
-	border-bottom: 2px solid #c8ccd4;
-	background: none;
-	border-radius: 0;
-	color: #223254;
-	transition: all 0.15s ease;
-	
-  }
-  .inp input:hover {
-	background: rgba(34,50,84,0.03);
-  }
-  .inp input:not(:placeholder-shown) + span {
-	color: #5a667f;
-	transform: translateY(-26px) scale(0.75);
-  }
-  .inp input:focus {
-	background: none;
-	outline: none;
-  }
-  .inp input:focus + span {
-	color: #07f;
-	transform: translateY(-26px) scale(0.75);
-  }
-  .inp input:focus + span + .border {
-	transform: scaleX(1);
-  }
+}
+
+.inp .border {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 2px;
+		width: 100%;
+		transform: scaleX(0);
+		transform-origin: 0 0;
+		transition: all 0.15s ease;
+}
+
+.inp input {
+		-webkit-appearance: none;
+		border: 0;
+		font-family: inherit;
+		padding: 12px 0;
+		height: 48px;
+		font-size: 16px;
+		font-weight: 500;
+		border-bottom: 2px solid #c8ccd4;
+		background: none;
+		border-radius: 0;
+		color: #223254;
+		transition: all 0.15s ease;
+		
+}
+
+.inp input:hover {
+		background: rgba(34,50,84,0.03);
+}
+
+.inp input:not(:placeholder-shown) + span {
+		color: #5a667f;
+		transform: translateY(-26px) scale(0.75);
+	}
+.inp input:focus {
+		background: none;
+		outline: none;
+	}
+.inp input:focus + span {
+		color: #07f;
+		transform: translateY(-26px) scale(0.75);
+	}
+.inp input:focus + span + .border {
+		transform: scaleX(1);
+	}
   
 
 .myButton {

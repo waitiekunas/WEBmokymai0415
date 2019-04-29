@@ -49,6 +49,8 @@ function signIn() {
 function showPage(bool) {
     if (bool) {
         document.getElementById('login-container').setAttribute('style', 'display:none;');
+        document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display:none;');
+        document.getElementsByClassName('wrapper')[0].setAttribute('style', 'flex-direction:initial;');
         document.getElementById('container').setAttribute('style', 'display:block;');
 
     }
@@ -103,5 +105,17 @@ function listEntries(entries) {
         counter++;
     });
 }
+
+function showSignIn(){
+    document.getElementsByClassName('input-fields')[0].setAttribute('style','display: flex');
+    document.getElementById('ok-button').setAttribute('onclick','signIn()');
+
+}
+function showSignUp(){
+    document.getElementsByClassName('input-fields')[0].setAttribute('style','display: flex');
+    document.getElementById('ok-button').setAttribute('onclick','signUp()');
+}
+
+
 
 listEntries(fakerecipes);

@@ -13,21 +13,23 @@
 <body>
     <div class='wrapper'>
         <div id="login-container">
-            <div class="input-fields">
-                <label for="inp" class="inp">
-                    <input type="text" id="login-name-input" placeholder="&nbsp;">
-                    <span class="label">Login name</span>
-                    <span class="border"></span>
-                </label>
-                <label for="inp" class="inp">
-                    <input type="text" id="password-input" placeholder="&nbsp;">
-                    <span class="label">Password</span>
-                    <span class="border"></span>
-                </label>
-            </div>
-            <a href="#" class="myButton" id="sign-in-button" onclick="signIn()">Sign In</a>
+
+            <a href="#" class="myButton" id="sign-in-button" onclick="showSignIn()">Sign In</a>
             <span>or</span>
-            <a href="#" class="myButton" id="sign-up-button" onclick="signUp()">Sign Up</a>
+            <a href="#" class="myButton" id="sign-up-button" onclick="showSignUp()">Sign Up</a>
+        </div>
+        <div class="input-fields">
+            <label for="inp" class="inp">
+                <input type="text" id="login-name-input" placeholder="&nbsp;">
+                <span class="label">Login name</span>
+                <span class="border"></span>
+            </label>
+            <label for="inp" class="inp">
+                <input type="text" id="password-input" placeholder="&nbsp;">
+                <span class="label">Password</span>
+                <span class="border"></span>
+            </label>
+            <a href="#" class="myButton" id="ok-button" onclick="">Ok</a>
         </div>
         <div class='container' id='container'>
             <div class='container-header'>
