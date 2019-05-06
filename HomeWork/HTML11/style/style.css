@@ -1,0 +1,8 @@
+.state-unclicked{
+    color: black;
+}
+
+.state-clicked{
+    color:red;
+    text-decoration: line-through;
+}

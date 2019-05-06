@@ -56,17 +56,17 @@ function showPage(bool) {
     }
 };
 
-function signUp (){
+function signUp() {
     let login = document.getElementById('login-name-input').value;
     let password = document.getElementById('password-input').value;
-    let id = fakeUser.length+1;
+    let id = fakeUser.length + 1;
     fakeUser.push({
-        "id":id,
-        "Login":login,
+        "id": id,
+        "Login": login,
         "Password": password
     });
-    document.getElementById('login-name-input').value =''
-    document.getElementById('password-input').value ='';
+    document.getElementById('login-name-input').value = ''
+    document.getElementById('password-input').value = '';
 
 }
 
@@ -106,15 +106,24 @@ function listEntries(entries) {
     });
 }
 
-function showSignIn(){
-    document.getElementsByClassName('input-fields')[0].setAttribute('style','display: flex');
-    document.getElementById('ok-button').setAttribute('onclick','signIn()');
+function showSignIn() {
+    console.log(document.getElementsByClassName('input-fields')[0].style)
+    if (document.getElementsByClassName('input-fields')[0].style === 'display: flex') {
+        document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: none');
+    } else {
+        document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: flex');
+        document.getElementById('ok-button').setAttribute('onclick', 'signIn()');
+    }
+};
 
-}
-function showSignUp(){
-    document.getElementsByClassName('input-fields')[0].setAttribute('style','display: flex');
-    document.getElementById('ok-button').setAttribute('onclick','signUp()');
-}
+function showSignUp() {
+    if (document.getElementsByClassName('input-fields')[0].style === 'display: flex') {
+        document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: none');
+    } else {
+        document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: flex');
+        document.getElementById('ok-button').setAttribute('onclick', 'signUp()');
+    }
+};
 
 
 
