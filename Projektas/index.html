@@ -21,27 +21,52 @@
 
         <div class="input-fields">
             <div class='fields'>
-            <label for="inp" class="inp">
-                <input type="text" id="login-name-input" placeholder="&nbsp;">
-                <span class="label">Login name</span>
-                <span class="border"></span>
-            </label>
-            <label for="inp" class="inp">
-                <input type="text" id="password-input" placeholder="&nbsp;">
-                <span class="label">Password</span>
-                <span class="border"></span>
-            </label>
-        </div>
-        <div class='button'>
-            <a href="#" class="myButton" id="ok-button" onclick="">Ok</a>
-        </div>
+                <form>
+                    <label for="inp" class="inp">
+                        <input type="text" id="login-name-input" placeholder="Login name">
+                        <span class="border"></span>
+                    </label>
+                    <label for="inp" class="inp">
+                        <input type="password" id="password-input" placeholder="Password">
+                        <span class="border"></span>
+                    </label>
+                    <label for="inp" class="inp" id="email">
+                        <input type="email" id="password-input" placeholder="Email">
+                        <span class="border"></span>
+                    </label>
+                </form>
+            </div>
+            <div class='button'>
+                <a href="#" class="myButton" id="ok-button" onclick="">Ok</a>
+            </div>
         </div>
 
         <div class='container' id='container'>
             <div class='container-header'>
+                <div class='button log-out'>
+                    <a href="#" class="myButton" id="log-out" onclick="logOut()">Log out</a>
+                </div>
             </div>
             <div class='container-body'>
                 <div class='container-left'>
+                    <div class='button'>
+                        <a href="#" class="myButton" id="show-recipe-form" onclick="showRecipeForm()">Post recipe!</a>
+                    </div>
+                    <span id='enter-recipe-form'>
+                        <div>
+                            <div id='dish-name'>
+                                    <label for="inp" class="inp">Recepe name</label>
+                                    <input type="text" value='inp' id="login-name-input" placeholder="Login name">
+                                
+                            </div>
+                            <div id='dish-ingredients'>
+                                    
+                                       
+                            </div>
+                            <div id='dish-flow'></div>
+                            <div id='dish-submit'></div>
+                        </div>
+                    </span>
                     <p>Left</p>
                 </div>
                 <div id='recipes' class='container-content'>

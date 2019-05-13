@@ -7,6 +7,7 @@ body {
   font-family: Avenir;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+  margin:0;
 }
 * {
   box-sizing: border-box;
@@ -43,6 +44,18 @@ body {
 	background:rgba(255,255,255,0.5);
 	border-radius: 25px;
 	margin: 5px;
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.log-out{
+	display: flex;
+    justify-content: flex-end;
+}
+
+#log-out{
+	align-self: center;
 }
 
 .container-header>p{
@@ -106,7 +119,8 @@ body {
 
 input{
     max-height: 25px;
-    margin: 10px;
+	margin: 10px;
+	z-index: 100;
 }
 
 .inp {
@@ -121,11 +135,11 @@ input{
 	top: 1px;
 	left: 0;
 	font-size: 16px;
-	color: #9098a9;
+	color: black;
 	font-weight: 500;
 	transform-origin: 0 0;
 	transition: all 0.2s ease;
-	width: max-content;
+	
 }
 
 .inp .border {
@@ -216,5 +230,13 @@ input{
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+.container-left .button{
+	display: flex;
+	justify-content: center;
+}
+
+#enter-recipe-form{
+	display: none;
 }
 

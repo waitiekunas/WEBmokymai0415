@@ -3,18 +3,70 @@ var fakerecipes = [
         "id": 1,
         "Name": "First recipe",
         "Ingredients": ["salt", "pepper", "sugar", "meat"],
+        "Quantities": {
+            "salt": "2 tea spoons",
+            "pepper": "1 tea spoon",
+            "sugar": "1 spoon",
+            "meat": "200 g."
+        },
         "Flow": "Some random text"
     },
     {
         "id": 2,
         "Name": "Second recipe",
         "Ingredients": ["salt", "pepper", "sugar", "fish"],
+        "Quantities": {
+            "salt": "2 tea spoons",
+            "pepper": "1 tea spoon",
+            "sugar": "1 spoon",
+            "fish": "200 g."
+        },
         "Flow": "Some random text"
     },
     {
         "id": 3,
         "Name": "Third recipe",
         "Ingredients": ["salt", "pepper", "sugar"],
+        "Quantities": {
+            "salt": "2 tea spoons",
+            "pepper": "1 tea spoon",
+            "sugar": "1 spoon"
+        },
+        "Flow": "Some random text"
+    },
+    {
+        "id": 1,
+        "Name": "First recipe",
+        "Ingredients": ["salt", "pepper", "sugar", "meat"],
+        "Quantities": {
+            "salt": "2 tea spoons",
+            "pepper": "1 tea spoon",
+            "sugar": "1 spoon",
+            "meat": "200 g."
+        },
+        "Flow": "Some random text"
+    },
+    {
+        "id": 2,
+        "Name": "Second recipe",
+        "Ingredients": ["salt", "pepper", "sugar", "fish"],
+        "Quantities": {
+            "salt": "2 tea spoons",
+            "pepper": "1 tea spoon",
+            "sugar": "1 spoon",
+            "fish": "200 g."
+        },
+        "Flow": "Some random text"
+    },
+    {
+        "id": 3,
+        "Name": "Third recipe",
+        "Ingredients": ["salt", "pepper", "sugar"],
+        "Quantities": {
+            "salt": "2 tea spoons",
+            "pepper": "1 tea spoon",
+            "sugar": "1 spoon"
+        },
         "Flow": "Some random text"
     }
 ];
@@ -112,6 +164,7 @@ function showSignIn() {
         document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: none');
     } else {
         document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: flex');
+        document.getElementById('email').setAttribute('style', 'display: none');
         document.getElementById('ok-button').setAttribute('onclick', 'signIn()');
     }
 };
@@ -121,9 +174,19 @@ function showSignUp() {
         document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: none');
     } else {
         document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display: flex');
+        document.getElementById('email').setAttribute('style', 'display: table-caption');
         document.getElementById('ok-button').setAttribute('onclick', 'signUp()');
     }
 };
+
+function logOut() {
+    document.getElementById('login-container').setAttribute('style', 'display:flex;');
+    document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display:none;');
+    document.getElementsByClassName('wrapper')[0].setAttribute('style', 'flex-direction:column;');
+    document.getElementById('container').setAttribute('style', 'display:none;');
+}
+
+//add recipe
 
 
 
