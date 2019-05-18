@@ -2,7 +2,6 @@ var fakerecipes = [
     {
         "id": 1,
         "Name": "First recipe",
-        "Ingredients": ["salt", "pepper", "sugar", "meat"],
         "Quantities": {
             "salt": "2 tea spoons",
             "pepper": "1 tea spoon",
@@ -14,7 +13,6 @@ var fakerecipes = [
     {
         "id": 2,
         "Name": "Second recipe",
-        "Ingredients": ["salt", "pepper", "sugar", "fish"],
         "Quantities": {
             "salt": "2 tea spoons",
             "pepper": "1 tea spoon",
@@ -26,7 +24,6 @@ var fakerecipes = [
     {
         "id": 3,
         "Name": "Third recipe",
-        "Ingredients": ["salt", "pepper", "sugar"],
         "Quantities": {
             "salt": "2 tea spoons",
             "pepper": "1 tea spoon",
@@ -37,7 +34,6 @@ var fakerecipes = [
     {
         "id": 1,
         "Name": "First recipe",
-        "Ingredients": ["salt", "pepper", "sugar", "meat"],
         "Quantities": {
             "salt": "2 tea spoons",
             "pepper": "1 tea spoon",
@@ -49,7 +45,6 @@ var fakerecipes = [
     {
         "id": 2,
         "Name": "Second recipe",
-        "Ingredients": ["salt", "pepper", "sugar", "fish"],
         "Quantities": {
             "salt": "2 tea spoons",
             "pepper": "1 tea spoon",
@@ -61,7 +56,6 @@ var fakerecipes = [
     {
         "id": 3,
         "Name": "Third recipe",
-        "Ingredients": ["salt", "pepper", "sugar"],
         "Quantities": {
             "salt": "2 tea spoons",
             "pepper": "1 tea spoon",
@@ -147,16 +141,85 @@ function listEntries(entries) {
         pictureNode.setAttribute('src', 'images/' + counter + '.jpg');
         pictureNode.classList.add('img-recipe')
 
-        let node = document.createElement("P");
+        let contentNode = document.createElement("DIV");
+        contentNode.setAttribute('class', 'main-recipe-child-div');
+
+        let recipeName = document.createElement("P");
         let textnode = document.createTextNode(element.Name);
-        node.appendChild(textnode);
+
+        let authorName = document.createElement("P");
+        let authorNode = document.createTextNode("Author");
+
+        let buttonDiv = document.createElement("DIV");
+        buttonDiv.setAttribute('class', 'recipe-button-div');
+
+        let likeButton = document.createElement("A");
+        likeButton.setAttribute('href', '#');
+        likeButton.setAttribute('class', 'myButton likeButton');
+        likeButton.setAttribute('id', 'likeButton: '+ counter);
+        likeButton.setAttribute('onclick', 'like()');
+
+        let likeText = document.createTextNode("Like");
+        likeButton.appendChild(likeText);
+
+        let disLikeButton = document.createElement("A");
+        disLikeButton.setAttribute('href', '#');
+        disLikeButton.setAttribute('class', 'myButton disLikeButton');
+        disLikeButton.setAttribute('id', 'disLikeButton: '+ counter);
+        disLikeButton.setAttribute('onclick', 'disLike()');
+
+        let disLikeText = document.createTextNode("Dislike");
+        disLikeButton.appendChild(disLikeText);
+
+      
+
+        
+
+        buttonDiv.appendChild(likeButton);
+        buttonDiv.appendChild(disLikeButton);
+
+        contentNode.appendChild(recipeName);
+        recipeName.appendChild(textnode);
+
+        contentNode.appendChild(authorName);
+        authorName.appendChild(authorNode);
+
+        contentNode.appendChild(buttonDiv);
+        contentNode.appendChild(returnAccordion(element));
+        
 
         document.getElementById("recipes").appendChild(parentNode);
         document.getElementById(counter).appendChild(pictureNode);
-        document.getElementById(counter).appendChild(node);
+        document.getElementById(counter).appendChild(contentNode);
         counter++;
     });
 }
+
+function returnAccordion(obj){
+    let accordionNode = document.createElement("DIV");
+    accordionNode.setAttribute('class', 'accordion-div');
+
+    let accBtn = document.createElement("BUTTON");
+    accBtn.setAttribute('class', 'accordion');
+    let btnText = document.createTextNode("See Recepi");
+    accBtn.appendChild(btnText);
+
+    let accDiv = document.createElement("DIV");
+    accDiv.setAttribute('class', 'panel');
+
+    let accP = document.createElement("P");
+    let pText = document.createTextNode(obj.Flow);
+    accP.appendChild(pText);
+
+    accDiv.appendChild(accP);
+
+    accordionNode.appendChild(accBtn);
+    accordionNode.appendChild(accDiv);
+
+    return accordionNode;
+};
+
+
 
 function showSignIn() {
     console.log(document.getElementsByClassName('input-fields')[0].style)
@@ -206,3 +269,20 @@ function postRecipe(){
 
 
 listEntries(fakerecipes);
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+  
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
