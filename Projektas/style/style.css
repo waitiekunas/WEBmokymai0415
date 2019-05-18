@@ -302,6 +302,7 @@ input{
 	background-color: white;
 	display: none;
 	overflow: hidden;
+	color: black;
   }
 
 @media screen and (max-width: 768px) {

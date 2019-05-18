@@ -211,6 +211,9 @@ function returnAccordion(obj){
     let pText = document.createTextNode(obj.Flow);
     accP.appendChild(pText);
 
+    let accList = returnAccList(obj.Quantities);
+
+    accDiv.appendChild(accList);
     accDiv.appendChild(accP);
 
     accordionNode.appendChild(accBtn);
@@ -218,6 +221,25 @@ function returnAccordion(obj){
 
     return accordionNode;
 };
+
+function returnAccList(obj){
+    let listDiv = document.createElement("DIV");
+    listDiv.setAttribute("class", "list-div");
+
+    let listUl = document.createElement("UL");
+    listDiv.appendChild(listUl);
+
+    Object.keys(obj).forEach(key=> {
+        let listLi = document.createElement("LI");
+        let listText = document.createTextNode(key + ": " + obj[key]);
+
+        listLi.appendChild(listText);
+
+        listUl.appendChild(listLi);
+    })
+
+    return listDiv;
+}
 
 
 
