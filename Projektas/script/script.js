@@ -181,11 +181,26 @@ function showSignUp() {
 
 function logOut() {
     document.getElementById('login-container').setAttribute('style', 'display:flex;');
+    document.getElementById('login-container').setAttribute('style', 'flex-direction:column;');
     document.getElementsByClassName('input-fields')[0].setAttribute('style', 'display:none;');
     document.getElementsByClassName('wrapper')[0].setAttribute('style', 'flex-direction:column;');
     document.getElementById('container').setAttribute('style', 'display:none;');
-}
+};
 
+function showRecipeForm(){
+    document.getElementById('enter-recipe-container').setAttribute('style', 'display:flex;');
+    document.getElementById('enter-recipe-container').setAttribute('style', 'z-index: 10000;');
+	
+};
+
+function hideRecipeForm(){
+    document.getElementById('enter-recipe-container').setAttribute('style', 'z-index: 0;');
+    document.getElementById('enter-recipe-container').setAttribute('style', 'display:none;');
+};
+
+function postRecipe(){
+    hideRecipeForm();
+};
 //add recipe
 
 

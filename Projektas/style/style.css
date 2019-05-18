@@ -1,5 +1,4 @@
-html,
-body {
+html,body {
   height: 100%;
 }
 body {
@@ -8,6 +7,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   margin:0;
+  position: relative;
 }
 * {
   box-sizing: border-box;
@@ -95,16 +95,18 @@ body {
 	padding:10px;
 }
 
-.img-recipe{
-    width:200px;
-    height: 200px;
-}
 
-#login-container, .input-fields{
+
+#login-buttons, .input-fields{
 	align-self: center;
 	display: flex;
 	justify-content: center;
 	width: 100%;
+}
+
+#header{
+	display: flex;
+    justify-content: center;
 }
 
 .input-fields{
@@ -236,7 +238,88 @@ input{
 	justify-content: center;
 }
 
-#enter-recipe-form{
-	display: none;
+#enter-recipe-container {
+	width: 81%;
+    height: 103%;
+    position: fixed;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 5px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
+
+#enter-recipe-form{
+	width: fit-content;
+	align-self: center;
+	background-color: rgba(255,255,255,0.5);
+    border: 1px solid black;
+	border-radius: 5%;
+	color: black;
+}
+
+#recipe-form{
+	display: flex;
+	flex-direction: column;
+}
+
+#recipe-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ing-lbl{
+    margin: 10px;
+    width: auto;
+    align-self: flex-start;
+}
+
+.ing{
+	display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+	.img-recipe{
+		width:100px;
+		height: 100px;
+	}
+	.container-content{
+		width: 100%;
+	}
+	.container-left{
+		width: 100%;
+	}
+	.container-body{
+		flex-direction: column;
+	}
+	.ing {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		text-align: -webkit-center;
+	}
+	#recipe-form {
+		display: flex;
+		flex-direction: column;
+	}
+  }
+
+  @media screen and (min-width: 769px) {
+	.img-recipe{
+		width:200px;
+		height: 200px;
+	}
+	.container-content{
+		width: 70%;
+	}
+	.container-left{
+		width: 30%;
+	}
+	.container-body{
+		flex-direction: row;
+	}
+  }
 

@@ -13,10 +13,15 @@
 <body>
     <div class='wrapper'>
         <div id="login-container">
+            <div id="header">
+                <h1>Welcome to FoodAlley!</h1>
 
-            <a href="#" class="myButton" id="sign-in-button" onclick="showSignIn()">Sign In</a>
-            <span>or</span>
-            <a href="#" class="myButton" id="sign-up-button" onclick="showSignUp()">Sign Up</a>
+            </div>
+            <div id="login-buttons">
+                <a href="#" class="myButton" id="sign-in-button" onclick="showSignIn()">Sign In</a>
+                <span>or</span>
+                <a href="#" class="myButton" id="sign-up-button" onclick="showSignUp()">Sign Up</a>
+            </div>
         </div>
 
         <div class="input-fields">
@@ -52,28 +57,51 @@
                     <div class='button'>
                         <a href="#" class="myButton" id="show-recipe-form" onclick="showRecipeForm()">Post recipe!</a>
                     </div>
-                    <span id='enter-recipe-form'>
-                        <div>
-                            <div id='dish-name'>
-                                    <label for="inp" class="inp">Recepe name</label>
-                                    <input type="text" value='inp' id="login-name-input" placeholder="Login name">
-                                
-                            </div>
-                            <div id='dish-ingredients'>
-                                    
-                                       
-                            </div>
-                            <div id='dish-flow'></div>
-                            <div id='dish-submit'></div>
-                        </div>
-                    </span>
+
                     <p>Left</p>
                 </div>
                 <div id='recipes' class='container-content'>
 
                 </div>
             </div>
+
         </div>
+        <div id='enter-recipe-container' style="display:none">
+            <div id='enter-recipe-form'>
+                <div id='recipe-form'>
+                    <div class='recipe-form-items' id='dish-name'>
+                        <label for="inp" class="inp">Recipe name</label>
+                        <input type="text" value='inp' id="login-name-input" placeholder="Recipe name">
+                    </div>
+                    <div class='recipe-form-items' id='dish-ingredients'>
+                        <div id="ingredients" style="display:none">
+                            <ul id="ingredients-listing">
+
+                            </ul>
+                        </div>
+                        <div class='ing'>
+                                <label class='ing-lbl' for="ing" class="inp">Ingredients</label>
+                                <div id='recipe-inputs'>
+                                        <input type="text" value='ing' id="ingredients-input" placeholder="Name">
+                                        <input type="text" value='ing' id="qtty-input" placeholder="Quantity">
+                                </div>
+                        </div>
+                        <a href="#" class="myButton" id="add-ingredient" onclick="addIngredient()">Add</a>
+                        <a href="#" class="myButton" id="remove-ingredient" onclick="removeIngredient()">Remove</a>
+                    </div>
+                    <div class='recipe-form-items' id='dish-flow'>
+                        <div class='ing'>
+                        <label class='ing-lbl' for="flow" class="inp" style="margin-top: 0px;">Ingredients</label>
+                        <textarea type="text" value='flow' id="flow-input" placeholder="Recipe"></textarea>
+                    </div>
+                    </div>
+                </div>
+                <div id='dish-submit'>
+                    <a href="#" class="myButton" id="show-recipe-form" onclick="postRecipe()">Post!</a>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script type="text/javascript" src="script/script.js"></script>
 </body>
