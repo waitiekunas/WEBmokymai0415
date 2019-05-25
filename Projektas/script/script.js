@@ -84,12 +84,24 @@ var fakeUser = [
 
 ];
 
-
+function create() {
+    $.ajax({
+        url: "script/test.php", //the page containing php script
+        type: "post", //request type,
+        dataType: 'json',
+        data: { registration: "success", name: "xyz", email: "abc@gmail.com" },
+        success: function (result) {
+            console.log("success");
+            console.log(result.abc);
+        }
+    });
+}
 
 function signIn() {
     let login = document.getElementById('login-name-input').value;
     let password = document.getElementById('password-input').value;
     showPage(checkExisting(login, password, fakeUser));
+    create();
 };
 
 function showPage(bool) {
@@ -156,7 +168,7 @@ function listEntries(entries) {
         let likeButton = document.createElement("A");
         likeButton.setAttribute('href', '#');
         likeButton.setAttribute('class', 'myButton likeButton');
-        likeButton.setAttribute('id', 'likeButton: '+ counter);
+        likeButton.setAttribute('id', 'likeButton: ' + counter);
         likeButton.setAttribute('onclick', 'like()');
 
         let likeText = document.createTextNode("Like");
@@ -165,15 +177,15 @@ function listEntries(entries) {
         let disLikeButton = document.createElement("A");
         disLikeButton.setAttribute('href', '#');
         disLikeButton.setAttribute('class', 'myButton disLikeButton');
-        disLikeButton.setAttribute('id', 'disLikeButton: '+ counter);
+        disLikeButton.setAttribute('id', 'disLikeButton: ' + counter);
         disLikeButton.setAttribute('onclick', 'disLike()');
 
         let disLikeText = document.createTextNode("Dislike");
         disLikeButton.appendChild(disLikeText);
 
-      
 
-        
+
+
 
         buttonDiv.appendChild(likeButton);
         buttonDiv.appendChild(disLikeButton);
@@ -186,7 +198,7 @@ function listEntries(entries) {
 
         contentNode.appendChild(buttonDiv);
         contentNode.appendChild(returnAccordion(element));
-        
+
 
         document.getElementById("recipes").appendChild(parentNode);
         document.getElementById(counter).appendChild(pictureNode);
@@ -195,7 +207,7 @@ function listEntries(entries) {
     });
 }
 
-function returnAccordion(obj){
+function returnAccordion(obj) {
     let accordionNode = document.createElement("DIV");
     accordionNode.setAttribute('class', 'accordion-div');
 
@@ -222,14 +234,14 @@ function returnAccordion(obj){
     return accordionNode;
 };
 
-function returnAccList(obj){
+function returnAccList(obj) {
     let listDiv = document.createElement("DIV");
     listDiv.setAttribute("class", "list-div");
 
     let listUl = document.createElement("UL");
     listDiv.appendChild(listUl);
 
-    Object.keys(obj).forEach(key=> {
+    Object.keys(obj).forEach(key => {
         let listLi = document.createElement("LI");
         let listText = document.createTextNode(key + ": " + obj[key]);
 
@@ -272,18 +284,18 @@ function logOut() {
     document.getElementById('container').setAttribute('style', 'display:none;');
 };
 
-function showRecipeForm(){
+function showRecipeForm() {
     document.getElementById('enter-recipe-container').setAttribute('style', 'display:flex;');
     document.getElementById('enter-recipe-container').setAttribute('style', 'z-index: 10000;');
-	
+
 };
 
-function hideRecipeForm(){
+function hideRecipeForm() {
     document.getElementById('enter-recipe-container').setAttribute('style', 'z-index: 0;');
     document.getElementById('enter-recipe-container').setAttribute('style', 'display:none;');
 };
 
-function postRecipe(){
+function postRecipe() {
     hideRecipeForm();
 };
 //add recipe
@@ -296,15 +308,15 @@ var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-  
-    this.classList.toggle("active");
+    acc[i].addEventListener("click", function () {
 
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
+        this.classList.toggle("active");
+
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
 }
