@@ -84,25 +84,33 @@ var fakeUser = [
 
 ];
 
-function create() {
+function signInDB() {
+    var result;
     $.ajax({
-        url: "script/test.php", //the page containing php script
-        type: "post", //request type,
-        dataType: 'json',
-        data: { registration: "success", name: "xyz", email: "abc@gmail.com" },
-        success: function (result) {
-            console.log("success");
-            console.log(result.abc);
+        url: "db-connections/signIn.php",
+        type: 'get',
+        async: false,
+        success: function (output) {
+            result = returnJson(output)
         }
     });
+    return result;
+}
+
+function returnJson(res) {
+    let response = res;
+    response = response.substr(1);
+    response = response.substr(0, response.length - 1);
+    return JSON.parse(response);
 }
 
 function signIn() {
     let login = document.getElementById('login-name-input').value;
     let password = document.getElementById('password-input').value;
-    showPage(checkExisting(login, password, fakeUser));
-    create();
+    showPage(checkExisting(login, password, signInDB()));
 };
+
+
 
 function showPage(bool) {
     if (bool) {
@@ -131,7 +139,7 @@ function signUp() {
 function checkExisting(login, password, data) {
     let isLoggedIn = false;
     data.forEach(user => {
-        if (user.Login === login && user.Password === password) {
+        if (user.LOGIN === login && user.PASSWORD === password) {
             isLoggedIn = true;
         } else {
             console.log("no match found");
