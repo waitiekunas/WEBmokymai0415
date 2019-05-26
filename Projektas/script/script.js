@@ -32,7 +32,7 @@ var fakerecipes = [
         "Flow": "Some random text"
     },
     {
-        "id": 1,
+        "id": 4,
         "Name": "First recipe",
         "Quantities": {
             "salt": "2 tea spoons",
@@ -43,7 +43,7 @@ var fakerecipes = [
         "Flow": "Some random text"
     },
     {
-        "id": 2,
+        "id": 5,
         "Name": "Second recipe",
         "Quantities": {
             "salt": "2 tea spoons",
@@ -54,7 +54,7 @@ var fakerecipes = [
         "Flow": "Some random text"
     },
     {
-        "id": 3,
+        "id": 6,
         "Name": "Third recipe",
         "Quantities": {
             "salt": "2 tea spoons",
@@ -83,24 +83,58 @@ var fakeUser = [
     }
 
 ];
+var currentUserId = 0;
 
 function signInDB() {
-    var result;
+    let result;
     $.ajax({
         url: "db-connections/signIn.php",
         type: 'get',
         async: false,
         success: function (output) {
+            console.log(output);
             result = returnJson(output)
         }
     });
+    console.log(result);
     return result;
-}
+};
+
+function getRecepies() {
+    let result;
+    $.ajax({
+        url: "db-connections/getRecepies.php",
+        type: 'get',
+        async: false,
+        success: function (output) {
+            console.log(output);
+            result = returnJson(output)
+        }
+    });
+    console.log(result);
+    return result;
+};
+
+function getIngredients() {
+    let result;
+    $.ajax({
+        url: "db-connections/getIngredients.php",
+        type: 'get',
+        async: false,
+        success: function (output) {
+            console.log(output);
+            result = returnJson(output)
+        }
+    });
+    console.log(result);
+    return result;
+};
 
 function returnJson(res) {
     let response = res;
     response = response.substr(1);
     response = response.substr(0, response.length - 1);
+    console.log(response);
     return JSON.parse(response);
 }
 
@@ -108,6 +142,7 @@ function signIn() {
     let login = document.getElementById('login-name-input').value;
     let password = document.getElementById('password-input').value;
     showPage(checkExisting(login, password, signInDB()));
+    listEntries(getRecepies());
 };
 
 
@@ -141,6 +176,7 @@ function checkExisting(login, password, data) {
     data.forEach(user => {
         if (user.LOGIN === login && user.PASSWORD === password) {
             isLoggedIn = true;
+            currentUserId = user.ID;
         } else {
             console.log("no match found");
         }
@@ -150,77 +186,78 @@ function checkExisting(login, password, data) {
 
 function listEntries(entries) {
     let counter = 1;
+
     entries.forEach(element => {
         console.log(element);
+        if (element) {
+            let parentNode = document.createElement('DIV');
+            parentNode.setAttribute('id', counter);
+            parentNode.classList.add('main-recipe');
 
-        let parentNode = document.createElement('DIV');
-        parentNode.setAttribute('id', counter);
-        parentNode.classList.add('main-recipe');
+            let pictureNode = document.createElement('IMG');
+            pictureNode.setAttribute('src', 'images/' + 1 + '.jpg');
+            pictureNode.classList.add('img-recipe')
 
-        let pictureNode = document.createElement('IMG');
-        pictureNode.setAttribute('src', 'images/' + counter + '.jpg');
-        pictureNode.classList.add('img-recipe')
+            let contentNode = document.createElement("DIV");
+            contentNode.setAttribute('class', 'main-recipe-child-div');
 
-        let contentNode = document.createElement("DIV");
-        contentNode.setAttribute('class', 'main-recipe-child-div');
+            let recipeName = document.createElement("P");
+            let textnode = document.createTextNode(element["Name"]);
 
-        let recipeName = document.createElement("P");
-        let textnode = document.createTextNode(element.Name);
+            let authorName = document.createElement("P");
+            let authorNode = document.createTextNode("Author");
 
-        let authorName = document.createElement("P");
-        let authorNode = document.createTextNode("Author");
+            let buttonDiv = document.createElement("DIV");
+            buttonDiv.setAttribute('class', 'recipe-button-div');
 
-        let buttonDiv = document.createElement("DIV");
-        buttonDiv.setAttribute('class', 'recipe-button-div');
+            let likeButton = document.createElement("A");
+            likeButton.setAttribute('href', '#');
+            likeButton.setAttribute('class', 'myButton likeButton');
+            likeButton.setAttribute('id', 'likeButton: ' + counter);
+            likeButton.setAttribute('onclick', 'like()');
 
-        let likeButton = document.createElement("A");
-        likeButton.setAttribute('href', '#');
-        likeButton.setAttribute('class', 'myButton likeButton');
-        likeButton.setAttribute('id', 'likeButton: ' + counter);
-        likeButton.setAttribute('onclick', 'like()');
+            let likeText = document.createTextNode("Like");
+            likeButton.appendChild(likeText);
 
-        let likeText = document.createTextNode("Like");
-        likeButton.appendChild(likeText);
+            let disLikeButton = document.createElement("A");
+            disLikeButton.setAttribute('href', '#');
+            disLikeButton.setAttribute('class', 'myButton disLikeButton');
+            disLikeButton.setAttribute('id', 'disLikeButton: ' + counter);
+            disLikeButton.setAttribute('onclick', 'disLike()');
 
-        let disLikeButton = document.createElement("A");
-        disLikeButton.setAttribute('href', '#');
-        disLikeButton.setAttribute('class', 'myButton disLikeButton');
-        disLikeButton.setAttribute('id', 'disLikeButton: ' + counter);
-        disLikeButton.setAttribute('onclick', 'disLike()');
+            let disLikeText = document.createTextNode("Dislike");
+            disLikeButton.appendChild(disLikeText);
 
-        let disLikeText = document.createTextNode("Dislike");
-        disLikeButton.appendChild(disLikeText);
+            buttonDiv.appendChild(likeButton);
+            buttonDiv.appendChild(disLikeButton);
 
+            contentNode.appendChild(recipeName);
+            recipeName.appendChild(textnode);
 
+            contentNode.appendChild(authorName);
+            authorName.appendChild(authorNode);
 
+            contentNode.appendChild(buttonDiv);
 
-
-        buttonDiv.appendChild(likeButton);
-        buttonDiv.appendChild(disLikeButton);
-
-        contentNode.appendChild(recipeName);
-        recipeName.appendChild(textnode);
-
-        contentNode.appendChild(authorName);
-        authorName.appendChild(authorNode);
-
-        contentNode.appendChild(buttonDiv);
-        contentNode.appendChild(returnAccordion(element));
+            contentNode.appendChild(returnAccordion(element, getIngredients()));
 
 
-        document.getElementById("recipes").appendChild(parentNode);
-        document.getElementById(counter).appendChild(pictureNode);
-        document.getElementById(counter).appendChild(contentNode);
-        counter++;
+            document.getElementById("recipes").appendChild(parentNode);
+            document.getElementById(counter).appendChild(pictureNode);
+            document.getElementById(counter).appendChild(contentNode);
+            counter++;
+        }
     });
 }
 
-function returnAccordion(obj) {
+function returnAccordion(obj, ingredients) {
+    
     let accordionNode = document.createElement("DIV");
     accordionNode.setAttribute('class', 'accordion-div');
 
     let accBtn = document.createElement("BUTTON");
     accBtn.setAttribute('class', 'accordion');
+    accBtn.setAttribute('onClick', 'accord()');
     let btnText = document.createTextNode("See Recepi");
     accBtn.appendChild(btnText);
 
@@ -228,10 +265,10 @@ function returnAccordion(obj) {
     accDiv.setAttribute('class', 'panel');
 
     let accP = document.createElement("P");
-    let pText = document.createTextNode(obj.Flow);
+    let pText = document.createTextNode(obj["Flow"]);
     accP.appendChild(pText);
 
-    let accList = returnAccList(obj.Quantities);
+    let accList = returnAccList(obj, ingredients);
 
     accDiv.appendChild(accList);
     accDiv.appendChild(accP);
@@ -242,20 +279,22 @@ function returnAccordion(obj) {
     return accordionNode;
 };
 
-function returnAccList(obj) {
+function returnAccList(obj, ing) {
     let listDiv = document.createElement("DIV");
     listDiv.setAttribute("class", "list-div");
 
     let listUl = document.createElement("UL");
     listDiv.appendChild(listUl);
 
-    Object.keys(obj).forEach(key => {
+    ing.forEach(key => {
+        if(obj["ID"]===key["foreignId"]){
         let listLi = document.createElement("LI");
-        let listText = document.createTextNode(key + ": " + obj[key]);
+        let listText = document.createTextNode(key["ingredient"] + ": " + key["quantity"]);
 
         listLi.appendChild(listText);
 
         listUl.appendChild(listLi);
+        }
     })
 
     return listDiv;
@@ -310,8 +349,7 @@ function postRecipe() {
 
 
 
-listEntries(fakerecipes);
-
+function accord (){
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -327,4 +365,4 @@ for (i = 0; i < acc.length; i++) {
             panel.style.display = "block";
         }
     });
-}
+}};

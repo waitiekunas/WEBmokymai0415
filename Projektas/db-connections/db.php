@@ -10,10 +10,11 @@ if($mysqli->connect_error){
     exit();
 } 
 
-// $login = "test3";
-// $pass = "test3";
+// $foreignID = 4;
+// $Ingredient = "salt";
+// $quantity = "2 spoons";
 
-// mysqli_query($mysqli, "INSERT INTO foodbook_users (LOGIN, PASSWORD) VALUES('$login', '$pass')");
+// mysqli_query($mysqli, "INSERT INTO ingredients (foreignID, ingredient, quantity) VALUES('$foreignID', '$Ingredient', '$quantity')");
 
 // $sql = "SELECT * FROM foodbook_users";
 // $result = $mysqli->query($sql);

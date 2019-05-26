@@ -31,4 +31,5 @@ while($result->fetch_assoc()){
 }
 
 var_export(json_encode($storeArray));
+exit();
 ?>

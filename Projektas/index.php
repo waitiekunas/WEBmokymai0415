@@ -57,8 +57,6 @@
                     <div class='button'>
                         <a href="#" class="myButton" id="show-recipe-form" onclick="showRecipeForm()">Post recipe!</a>
                     </div>
-
-                    <p>Left</p>
                 </div>
                 <div id='recipes' class='container-content'>
 
